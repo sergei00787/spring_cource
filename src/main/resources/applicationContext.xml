@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="myCat" class="com.jbond.projects.spring_cource.Cat" >
+        <constructor-arg index="0" value="Hello cat - " type="java.lang.String"/>
+        <constructor-arg index="1" value="Shusha" type="java.lang.String"/>
+        <constructor-arg index="2" value="3" type="int"/>
+    </bean>
+
+    <bean id="personTest" class="com.jbond.projects.spring_cource.Person" depends-on="myCat">
+        <constructor-arg ref="myCat"/>
+    </bean>
+</beans>
