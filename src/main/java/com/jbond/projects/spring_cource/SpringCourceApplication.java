@@ -9,13 +9,15 @@ public class SpringCourceApplication {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//        SpringApplication.run(SpringCourceApplication.class, args);
+
 
         Person person = context.getBean("personTest", Person.class);
         person.sayYourCat();
         person.sayYourDog();
 
         context.close();
+
+        //        SpringApplication.run(SpringCourceApplication.class, args);
     }
 
 }

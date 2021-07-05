@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    bean with constructor-->
-    <bean id="myCat" class="com.jbond.projects.spring_cource.Cat" >
+    <context:property-placeholder location="application.properties"/>
+
+    <!--    bean with constructor-->
+    <bean id="myCat" class="com.jbond.projects.spring_cource.Cat" scope="prototype">
         <constructor-arg index="0" value="Hello cat - " type="java.lang.String"/>
         <constructor-arg index="1" value="Shusha" type="java.lang.String"/>
         <constructor-arg index="2" value="3" type="int"/>
     </bean>
 
-<!--    bean with no args-->
-    <bean id="myDog" class="com.jbond.projects.spring_cource.Dog">
-        <property name="phrase" value="Dog phrase"/>
-        <property name="name" value="Bobik"/>
-        <property name="age" value="1" />
+    <!--    bean with no args-->
+    <bean id="myDog" class="com.jbond.projects.spring_cource.Dog" scope="prototype">
+        <property name="phrase" value="${dog.phrase}}"/>
+        <property name="name" value="${dog.name}"/>
+        <property name="age" value="${dog.age}"/>
     </bean>
 
-<!--    Bean with dependency injection DI "on constructor" and "on setter"-->
-    <bean id="personTest" class="com.jbond.projects.spring_cource.Person" depends-on="myCat">
+    <!--    Bean with dependency injection DI "on constructor" and "on setter"-->
+    <bean id="personTest"
+          class="com.jbond.projects.spring_cource.Person"
+          scope="prototype"
+          init-method="initPerson"
+          destroy-method="destroyPerson"> <!-- НЕ ВЫЗЫВАЕТСЯ для  Scope = Prototype -->
         <constructor-arg ref="myCat"/><!--"on constructor"-->
         <property name="dog" ref="myDog"/><!--"on setter"-->
     </bean>

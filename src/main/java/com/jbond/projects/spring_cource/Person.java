@@ -3,6 +3,7 @@ package com.jbond.projects.spring_cource;
 public class Person {
     private Cat cat;
     private Dog dog;
+    private String name;
 
     public Person(Cat cat) {
         this.cat = cat;
@@ -18,5 +19,19 @@ public class Person {
 
     public void setDog(Dog dog) {
         this.dog = dog;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void initPerson(){
+        System.out.println("Init person bean");
+        this.name = "DefaultName";
+    }
+
+    public void destroyPerson(){
+        System.out.println("Destroy person bean");
+        this.name = null;
     }
 }
