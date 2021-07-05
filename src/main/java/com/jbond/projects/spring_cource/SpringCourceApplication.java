@@ -12,7 +12,8 @@ public class SpringCourceApplication {
 //        SpringApplication.run(SpringCourceApplication.class, args);
 
         Person person = context.getBean("personTest", Person.class);
-        person.sayYourPet();
+        person.sayYourCat();
+        person.sayYourDog();
 
         context.close();
     }
