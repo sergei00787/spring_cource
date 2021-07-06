@@ -1,6 +1,7 @@
 package com.jbond.projects.spring_cource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -8,27 +9,17 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value = "prototype")
 public class Person {
+    @Qualifier("cat")
     @Autowired
-    private Cat cat;
-    @Autowired
-    private Dog dog;
+    private Pet pet;
     private String name;
 
-    public Person(Cat cat, Dog dog) {
-        this.dog = dog;
-        this.cat = cat;
-    }
-
     public void sayYourCat(){
-        System.out.println("my cat name is " + cat.getName());
+        System.out.println("my cat name is " + pet.toString());
     }
 
     public void sayYourDog(){
-        System.out.println("my Dog's name is " + dog.getName());
-    }
-
-    public void setDog(Dog dog) {
-        this.dog = dog;
+        System.out.println("my Dog's name is " + pet.toString());
     }
 
     public String getName() {

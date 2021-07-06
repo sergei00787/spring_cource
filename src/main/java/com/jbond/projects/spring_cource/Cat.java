@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @Component
 @Scope(value = "prototype")
-public class Cat {
+public class Cat implements Pet{
     @Setter
     @Getter
     private String phrase;
@@ -25,5 +25,10 @@ public class Cat {
     public void say(String phrase){
         setPhrase(phrase);
         System.out.println(this.phrase + " - " + age + " - " + name );
+    }
+
+    @Override
+    public void say() {
+        System.out.println("Meow");
     }
 }
