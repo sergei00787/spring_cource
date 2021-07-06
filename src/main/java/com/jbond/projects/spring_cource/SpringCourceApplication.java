@@ -20,10 +20,11 @@ public class SpringCourceApplication {
 //        contextAnnotation.close();
 //        context.close();
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigWithoutComponentScan.class);
+//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigWithoutComponentScan.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
-        ProjectManager projectManager = context.getBean("projectManagerBean", ProjectManager.class);
-        System.out.println(projectManager.getSalary());
+        Cat cat = context.getBean("cat", Cat.class);
+        cat.say();
 
         context.close();
 
