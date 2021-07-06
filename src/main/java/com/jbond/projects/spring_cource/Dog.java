@@ -1,9 +1,13 @@
 package com.jbond.projects.spring_cource;
 
 import lombok.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
+@Component
+@Scope(value = "prototype")
 public class Dog {
     @Setter
     @Getter
