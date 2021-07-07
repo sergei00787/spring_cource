@@ -26,6 +26,10 @@ public class SpringCourceApplication {
         Cat cat = context.getBean("cat", Cat.class);
         cat.say();
 
+        int catAge = cat.sayMeow();
+
+        System.out.println(catAge);
+
         context.close();
 
         //        SpringApplication.run(SpringCourceApplication.class, args);

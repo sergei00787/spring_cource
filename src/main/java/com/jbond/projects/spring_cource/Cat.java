@@ -16,4 +16,8 @@ public class Cat implements Pet{
     public void say() {
         System.out.println("Meow");
     }
+
+    public int sayMeow(){
+        return 1;
+    }
 }
