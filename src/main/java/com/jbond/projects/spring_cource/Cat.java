@@ -17,7 +17,10 @@ public class Cat implements Pet{
         System.out.println("Meow");
     }
 
-    public int sayMeow(){
-        return 1;
+    public String sayMeow(){
+        return "Cat Phrase";
+    }
+    public String sayKuku(){
+        return "Cat Phrase";
     }
 }

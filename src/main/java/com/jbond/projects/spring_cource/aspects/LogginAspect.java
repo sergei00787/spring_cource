@@ -1,10 +1,8 @@
 package com.jbond.projects.spring_cource.aspects;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +24,7 @@ public class LogginAspect {
     private void allMethodAndSay(){};
 
 
-    // Аспект перед вызовом метода
+    // Advice перед вызовом метода
     // В JoinPoint содержится информация о сигнатуре вызываемого метода и его параметров
     @Before("sayMethod()")
     public void beforeCatSayAdvice(JoinPoint joinPoint){
@@ -36,12 +34,36 @@ public class LogginAspect {
         System.out.println(joinPoint.getKind());
     }
 
-    // Аспект вызывается после выдачи результата, но перед передачей результата
+    // Advice вызывается после выдачи результата, но перед передачей результата
     // дальше в принимающий код который использует данный результат.
     // Таким образом можно изменить результат
-    @AfterReturning(pointcut = "execution(public int sayMeow())", returning = "result")
-    public void afterRetMethodAdvice(JoinPoint joinPoint, int result){
+    @AfterReturning(pointcut = "execution(public String sayKuku())", returning = "result")
+    public void afterRetMethodAdvice(JoinPoint joinPoint, String result){
         System.out.println("afterRetMethodAdvice: run");
-        result = 2;
+        result = "KUKU returning in Advice";
     }
+
+    //@AfterThrowing
+    // Advice вызывается после выбрасывания исключения, можно поймать ошибку вставляя параметр.
+
+    //@After()
+    // Advice вызывается либо при нормальном исполнении программы и выдачи результата, либо с выдачей ошибки.
+    // С помощью данного аспекта нельзя отловить ошибку и нельзя повлиять на результат выдачи метода
+
+    // @Around()
+    // Advice
+    @Around("execution(public String sayMeow())")
+    public String aroundSayMeowAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        System.out.println("begin advice aroundSayMeowAdvice.");
+
+
+        Object target = proceedingJoinPoint.proceed();
+        target = "TARGET CHANGED";
+
+        System.out.println("end advice aroundSayMeowAdvice.");
+
+        return (String)target;
+    }
+
+
 }

@@ -24,11 +24,13 @@ public class SpringCourceApplication {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
         Cat cat = context.getBean("cat", Cat.class);
-        cat.say();
+        //cat.say();
 
-        int catAge = cat.sayMeow();
+        String catMeow= cat.sayMeow();
+        System.out.println(catMeow);
 
-        System.out.println(catAge);
+        String catKuku= cat.sayKuku();
+        System.out.println(catKuku);
 
         context.close();
 
