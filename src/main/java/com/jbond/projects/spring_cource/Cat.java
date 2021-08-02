@@ -3,6 +3,8 @@ package com.jbond.projects.spring_cource;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -10,7 +12,10 @@ import org.springframework.stereotype.Component;
 public class Cat implements Pet{
     private String phrase;
     private String name;
+    private Male male;
     private int age;
+    private List<Cat> parents;
+
 
     @Override
     public void say() {
