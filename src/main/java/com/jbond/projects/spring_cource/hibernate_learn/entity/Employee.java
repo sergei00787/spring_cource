@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "employee")
 @Data
 @NoArgsConstructor
+@Access(value = AccessType.PROPERTY)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

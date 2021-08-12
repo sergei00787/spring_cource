@@ -1,12 +1,11 @@
 package com.jbond.projects.spring_cource.hibernate_learn;
 
-import com.jbond.projects.spring_cource.hibernate_learn.entity.Department;
-import com.jbond.projects.spring_cource.hibernate_learn.entity.Employee;
-import com.jbond.projects.spring_cource.hibernate_learn.entity.EmployeeDetail;
+import com.jbond.projects.spring_cource.hibernate_learn.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // В данном примере показаны связи:
@@ -21,6 +20,8 @@ public class HibernateTest {
                 .addAnnotatedClass(Employee.class)
                 .addAnnotatedClass(EmployeeDetail.class)
                 .addAnnotatedClass(Department.class)
+                .addAnnotatedClass(Student.class)
+                .addAnnotatedClass(Professor.class)
                 .buildSessionFactory();
 
 
@@ -90,6 +91,8 @@ public class HibernateTest {
         } finally {
             sessionFactory.close();
         }
+
+
 
     }
 
