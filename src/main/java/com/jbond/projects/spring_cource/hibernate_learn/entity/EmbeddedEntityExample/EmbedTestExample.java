@@ -27,14 +27,13 @@ public class EmbedTestExample {
             session.persist(mainCl);
             session.getTransaction().commit();
 
-
 //            session.beginTransaction();
 //            List<MainCl> mc = session.createQuery("select m from MainCl m where m.id = 6").list();
 //            MainCl m1 = mc.get(0);
 //            EmbedCl e1 = m1.getEmbedCl();
 //            System.out.println(e1.getPropEnums().toString());
 //            session.getTransaction().commit();
-
+//
 //            session.beginTransaction();
 //            session.createQuery("delete from MainCl m where m.id = :paramId")
 //                    .setParameter("paramId",  mainCl.getId())
