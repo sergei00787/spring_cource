@@ -1,4 +1,4 @@
-package com.jbond.projects.spring_cource.hibernate_learn.entity;
+package com.jbond.projects.spring_cource.hibernate_learn.entity.Relations;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,7 @@ public class EmployeeDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "city")
     private String city;
@@ -21,7 +21,7 @@ public class EmployeeDetail {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(mappedBy = "detail", cascade = {CascadeType.DETACH, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne(mappedBy = "detail", cascade = CascadeType.PERSIST)
     private Employee employee;
 
     public EmployeeDetail(String city, String email) {

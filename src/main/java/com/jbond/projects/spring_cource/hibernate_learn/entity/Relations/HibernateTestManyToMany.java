@@ -1,6 +1,5 @@
-package com.jbond.projects.spring_cource.hibernate_learn;
+package com.jbond.projects.spring_cource.hibernate_learn.entity.Relations;
 
-import com.jbond.projects.spring_cource.hibernate_learn.entity.Relations.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

@@ -1,6 +1,5 @@
-package com.jbond.projects.spring_cource.hibernate_learn.entity;
+package com.jbond.projects.spring_cource.hibernate_learn.entity.Relations;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Immutable;

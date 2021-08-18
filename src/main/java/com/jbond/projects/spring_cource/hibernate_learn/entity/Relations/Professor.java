@@ -1,4 +1,4 @@
-package com.jbond.projects.spring_cource.hibernate_learn.entity;
+package com.jbond.projects.spring_cource.hibernate_learn.entity.Relations;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
