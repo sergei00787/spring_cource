@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "constraction_domain")
+@Table(name = "constraints_domain")
 @Data
 @NoArgsConstructor
 public class DomainConstr {
@@ -17,6 +17,8 @@ public class DomainConstr {
     @Column(name = "email_id")
     private long id;
 
+    // Устраиваем проверку что колонка является email, в базе есть тип (domain) email
+    // который мы создали, а так же что поле уникально, и не может быть пустым.
     @Column(columnDefinition = "email", unique = true, nullable = false)
     private String email;
 
