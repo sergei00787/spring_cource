@@ -2,6 +2,7 @@ package com.jbond.projects.spring_cource;
 
 import com.jbond.projects.spring_cource.hibernate_learn.entity.Constraints.DomainConstr;
 import com.jbond.projects.spring_cource.hibernate_learn.entity.Constraints.TableConstr;
+import com.jbond.projects.spring_cource.hibernate_learn.entity.IndexAdd.IndexAddExample;
 import com.jbond.projects.spring_cource.hibernate_learn.entity.Relations.Department;
 import com.jbond.projects.spring_cource.hibernate_learn.entity.Relations.Employee;
 import com.jbond.projects.spring_cource.hibernate_learn.entity.Relations.EmployeeDetail;
@@ -33,6 +34,7 @@ public class HibernateUtil {
                         .addAnnotatedClass(Department.class)
                         .addAnnotatedClass(DomainConstr.class)
                         .addAnnotatedClass(TableConstr.class)
+                        .addAnnotatedClass(IndexAddExample.class)
                         .getMetadataBuilder().build();
 
                 sessionFactory = metadata.getSessionFactoryBuilder().build();
