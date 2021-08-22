@@ -15,6 +15,9 @@
 
         <property name="show_sql">true</property> <!-- Show SQL in console -->
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
+        <property name="hibernate.order_updates">true</property>
+        <!-- Для предотвращения взаимных блокировок - Hibernate будет упорядочивать все инструкции UPDATE в порядке возрастания значений
+        первичного ключа экземпляров сущностей и элементов коллекций, обнаруженных во время выталкивания контекста>
         
         <property name="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property>
 

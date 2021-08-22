@@ -7,15 +7,15 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "Items")
+@Table(name = "Items_LifeCycleObject")
 @NoArgsConstructor
-public class Item {
+public class ItemLifeCycleObject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String itemName;
 
-    public Item(String itemName) {
+    public ItemLifeCycleObject(String itemName) {
         this.itemName = itemName;
     }
 }

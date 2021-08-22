@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnitUtil;
 
-public class EntityManagerTest {
+public class LifeCycleObjectTest {
     private static EntityManagerFactory emf;
 
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class EntityManagerTest {
 
             // Тестируем состояния
             em.getTransaction().begin();
-            Item item = new Item("simple_item_1");
+            ItemLifeCycleObject item = new ItemLifeCycleObject("simple_item_1");
 
             // Состояние Transient (Временное)
             System.out.println(em.contains(item));
@@ -50,7 +50,7 @@ public class EntityManagerTest {
             // Тестируем получение ссылки на объект
             em = emf.createEntityManager();
             em.getTransaction().begin();
-            Item item2 = em.getReference(Item.class, 1L); // Получаем ссылку на объект, создается прокси-объект
+            ItemLifeCycleObject item2 = em.getReference(ItemLifeCycleObject.class, 1L); // Получаем ссылку на объект, создается прокси-объект
 
             PersistenceUnitUtil persistenceUnitUtil = emf.getPersistenceUnitUtil();
             System.out.println("Объект ITEM2 содержится в контексте хранения? - " + persistenceUnitUtil.isLoaded(item2));  //false
