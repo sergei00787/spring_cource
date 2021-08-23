@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "item_with_version")
+@Table(name = "item_with_optimistic_lock")
 //@OptimisticLocking(type = OptimisticLockType.ALL)
 // Когда не возможно создать столбец версии или отметки времени
 // Альтернативная реализация версионирования сравнивает текущее состояние в базе данных
@@ -22,7 +22,7 @@ import java.util.Date;
 // а INSERT – только столбцы, которые не могут принимать значение null.
 @Data
 @NoArgsConstructor
-public class ItemConcurrencyWithVersion {
+public class ItemConcurrencyWithOptimisticLock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

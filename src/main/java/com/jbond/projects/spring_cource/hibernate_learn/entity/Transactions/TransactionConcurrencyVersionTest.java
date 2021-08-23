@@ -10,7 +10,7 @@ public class TransactionConcurrencyVersionTest {
     public static void main(String[] args) {
         Configuration configuration = new Configuration();
         SessionFactory sessionFactory = configuration.configure("hibernate.cfg.xml")
-                .addAnnotatedClass(ItemConcurrencyWithVersion.class)
+                .addAnnotatedClass(ItemConcurrencyWithOptimisticLock.class)
                 .buildSessionFactory();
 
 //        ItemWithVersion item = new ItemWithVersion();
@@ -27,7 +27,7 @@ public class TransactionConcurrencyVersionTest {
 //            session.save(item3);
 
 
-            ItemConcurrencyWithVersion item = session.get(ItemConcurrencyWithVersion.class, 1L, LockMode.OPTIMISTIC_FORCE_INCREMENT);
+            ItemConcurrencyWithOptimisticLock item = session.get(ItemConcurrencyWithOptimisticLock.class, 1L, LockMode.OPTIMISTIC_FORCE_INCREMENT);
             // LockMode.OPTIMISTIC_FORCE_INCREMENT - принудительно увеличивает версию при запросе
             // PESSIMISTIC_READ гарантирует повторимость чтения.
             // PESSIMISTIC_WRITE предоставляет дополнительные гарантии: в дополнение к повторимому чтению
