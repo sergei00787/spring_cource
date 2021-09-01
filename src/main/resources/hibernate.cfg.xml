@@ -21,6 +21,10 @@
         
         <property name="hibernate.hbm2ddl.import_files_sql_extractor">org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor</property>
 
+
+        <mapping resource="queries/ItemJPQLQuery.hbm.xml"/>
+
+
         <!--mapping class="beans.Task"/-->
 
     </session-factory>

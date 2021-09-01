@@ -5,9 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Collection;
+import java.util.HashSet;
 
 public class AddDbData {
 
@@ -16,7 +15,35 @@ public class AddDbData {
         SessionFactory sessionFactory = configuration.configure("hibernate.cfg.xml")
                 .addAnnotatedClass(ItemForQuery.class)
                 .addAnnotatedClass(UserForQuery.class)
+                .addAnnotatedClass(ItemForQueryWithCollection.class)
+                .addAnnotatedClass(UserForQueryWithCollection.class)
                 .buildSessionFactory();
+
+        Faker faker = new Faker();
+
+        try (Session session = sessionFactory.openSession()) {
+            session.getTransaction().begin();
+
+            for (int i = 0; i < 100; i++) {
+                UserForQueryWithCollection user = new UserForQueryWithCollection(faker.name().username());
+                UserForQueryWithCollection user1 = new UserForQueryWithCollection(faker.name().username());
+                UserForQueryWithCollection user2 = new UserForQueryWithCollection(faker.name().username());
+
+                ItemForQueryWithCollection item = new ItemForQueryWithCollection(faker.animal().name());
+                item.getUsers().add(user);
+                item.getUsers().add(user1);
+                item.getUsers().add(user2);
+
+                session.persist(item);
+            }
+
+            session.getTransaction().commit();
+
+        } finally {
+            sessionFactory.close();
+        }
+
+        /*
 
         List<ItemForQuery> listItems = new ArrayList<ItemForQuery>();
         Faker faker = new Faker();
@@ -44,6 +71,8 @@ public class AddDbData {
         } finally {
             sessionFactory.close();
         }
+
+        */
 
 
     }

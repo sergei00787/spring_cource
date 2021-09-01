@@ -4,16 +4,19 @@ import org.hibernate.ScrollMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
 import javax.persistence.Parameter;
 import javax.persistence.TemporalType;
+import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.Date;
 import java.util.List;
+import java.util.Set;
 
 public class JPQueryTest {
 
@@ -29,7 +32,8 @@ public class JPQueryTest {
 
             // Запрос с именованными параметрами
 
-            /*Query<UserForQuery> query =
+            /*
+            Query<UserForQuery> query =
                     session.createQuery( "select u from UserForQuery u where u.username = :paramUsername");
             query.setParameter("paramUsername", "plaid");
 
@@ -103,7 +107,21 @@ public class JPQueryTest {
             queryNamed.setParameter("paramName", "Priscilla");
             List<ItemForQuery> listItemForQuery = queryNamed.getResultList();
 
-            System.out.println("----------SIZE LIST ---------- " + listItemForQuery.size());
+            System.out.println("----------simple query LIST ---------- " + listItemForQuery.size());
+
+
+            // Выборка с именованными запросами из xml-mapping
+            Query<ItemForQuery> qItemsByXml = session.createNamedQuery("findAllItems", ItemForQuery.class);
+            List<ItemForQuery> setItems = qItemsByXml.getResultList();
+
+            System.out.println("=========XML LIST==================");
+            System.out.println(setItems.size());
+
+
+            Query<UserForQuery> qNative = session.createNamedQuery("nativFindUsers", UserForQuery.class);
+            List<UserForQuery> listNativ = qNative.getResultList();
+            System.out.println("=========Nativ LIST==================");
+            System.out.println(listNativ.size());
 
 
             session.getTransaction().commit();

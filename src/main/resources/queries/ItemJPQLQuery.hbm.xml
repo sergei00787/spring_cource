@@ -1,0 +1,21 @@
+<entity-mappings version="2.1"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+ http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+    <named-query name="findAllItems">
+        <query>
+            <![CDATA[
+                select i from ItemForQuery i
+            ]]>
+        </query>
+    </named-query>
+    <named-native-query
+            name="nativFindUsers"
+            result-class="com.jbond.projects.spring_cource.hibernate_learn.entity.QueryLearn.UserForQuery">
+        <query>
+            select * from user_for_query
+        </query>
+    </named-native-query>
+
+</entity-mappings>
